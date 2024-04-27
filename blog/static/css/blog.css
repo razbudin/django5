@@ -12,6 +12,12 @@ a {
     text-decoration: none;
 }
 
+/* эту я вписал сюда */
+a.disabled {
+    pointer-events: none;
+    color: #888
+}
+
 h1 {
     font-weight: normal;
     border-bottom: 1px solid #777; /* Светлее для темного фона */
@@ -45,10 +51,10 @@ p.date {
 }
 
 /* pagination */
-.pagination {
+/*.pagination {
     margin: 40px 0;
     font-weight: bold;
-}
+}*/
 
 /* forms */
 input[type=submit] {
