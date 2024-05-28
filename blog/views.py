@@ -1,6 +1,31 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
+
+
+# class MyPaginator(Paginator):
+#     def valide_num(self, num):
+#         try:
+#             return super().validate_num(num)
+#         except EmptyPage:
+#             if int(num) > 1:
+#                 return self.num_pages
+#             elif int(num) < 1:
+#                 return 1
+#             else:
+#                 raise
+
+
+class PostListView(ListView):
+    """
+    Альтернативное представление списка постов
+    """
+    queryset = Post.published.all()
+    context_object_name = 'posts'
+    paginate_by = 3
+    template_name = 'blog/post/list.html'
+    # paginator_class = MyPaginator
 
 
 def post_list(request):
